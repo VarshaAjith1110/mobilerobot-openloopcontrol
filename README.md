@@ -11,36 +11,60 @@ To develop a python control code to move the mobilerobot along the predefined pa
 
 Step1:
 
-<br/>
+Use from robomaster import robot
 
 Step2:
 
-<br/>
+Choose the x,y,z - axis movement distance(meters).
 
 Step3:
 
-<br/>
+Give ep_chasis.move to move straight
 
 Step4:
 
-<br/>
+Give ep_chasis.drive to get circular motion.
+
 
 Step5:
 
-<br/>
+Give ep_chasis.move to move straight
+
+Step 6:
+
+Give ep_chasis.drive to get circular motion.
+
 
 ## Program
 ```python
 from robomaster import robot
 import time
 
-if __name__ == '__main__':
+from robomaster import robot
+import time
+
+if _name_ == '_main_':
     ep_robot = robot.Robot()
     ep_robot.initialize(conn_type="ap")
 
     ep_chassis = ep_robot.chassis
 
-    ## Write your code here
+    '''
+    x = x-axis movement distance,( meters) [-5,5]
+    y = y-axis movement distance,( meters) [-5,5]
+    z = rotation about z axis ( degree)[-180,180]
+    xy_speed = xy axis movement speed,( unit meter/second) [0.5,2]
+    '''
+    ep_chassis.move(x=1.5, y=0, z=0, xy_speed=1.5).wait_for_completed()
+    ep_chassis.drive_speed(x=0.60,y=0,z=30)
+    time.sleep(8)
+    ep_chassis.move(x=0.5, y=0, z=0, xy_speed=1).wait_for_completed()
+    ep_chassis.drive_speed(x=0.25,y=0,z=10)
+    time.sleep(6)
+      
+
+    ep_robot.close()
+      
 
 
 
@@ -50,10 +74,11 @@ if __name__ == '__main__':
 
 ## MobileRobot Movement Image:
 
-![robo](./img/robomaster.png)
+![robo](./mov.jpeg)
 
 Insert image here
-
+![INITIAL](./in.jpeg)
+![FINAL](./fi.jpeg)
 
 <br/>
 <br/>
@@ -64,7 +89,7 @@ Insert image here
 
 Upload your video in Youtube and paste your video-id here
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE)
+(https://youtu.be/Wod5hq71pHs)
 
 <br/>
 <br/>
